@@ -87,6 +87,14 @@ void list_insert(list* bl, node* n, void* data, LIST_ERR *err)
 {
 	node* new = node_init(data, err);
 	
+	if (bl == NULL) {
+		free(new);
+		fprintf(stderr, "List_insert error\n");
+		if (err != NULL)
+			*err = EINVARG;
+		return;
+	}
+	
     if (n->next == NULL) {
 		free(new);
         list_add(bl, data, err);
@@ -98,6 +106,7 @@ void list_insert(list* bl, node* n, void* data, LIST_ERR *err)
         new->next = t;
         new->prev = n;
     };
+	*err = ESUCCESS;
 };
 
 void list_remove(list* bl, node* n, LIST_ERR *err)
