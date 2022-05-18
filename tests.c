@@ -82,5 +82,23 @@ int main()
 		fprintf(stdout, "Test_11\t->\tFAILED\n");
 	else
 		fprintf(stdout, "Test_11\t->\tPASSED\n");
+	
+	list_remove(list, list->first, &err);
+	if (err != ESUCCESS)
+		fprintf(stdout, "Test_12\t->\tFAILED\n");
+	else
+		fprintf(stdout, "Test_12\t->\tPASSED\n");
+
+	list_remove(list, list->last, &err);
+	if (err != ESUCCESS)
+		fprintf(stdout, "Test_13\t->\tFAILED\n");
+	else
+		fprintf(stdout, "Test_13\t->\tPASSED\n");
+	
+	list_remove(list, list->first->next, &err);
+	if (err != ESUCCESS)
+		fprintf(stdout, "Test_14\t->\tFAILED\n");
+	else
+		fprintf(stdout, "Test_14\t->\tPASSED\n");
 	return 0;
 }
