@@ -70,5 +70,11 @@ int main()
 		else
 			fprintf(stdout, "Test_9\t->\tPASSED\n");
 	}
+	
+	list_insert(list, list->first, &a[N-1], &err);
+	if (err != ESUCCESS)
+		fprintf(stdout, "Test_10\t->\tFAILED\n");
+	else
+		fprintf(stdout, "Test_10\t->\tPASSED\n");
 	return 0;
 }
