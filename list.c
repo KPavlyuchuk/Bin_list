@@ -31,4 +31,33 @@ void list_add(list* bl, void* data)
         new->prev = bl->last;
         bl->last = new;
     }
-}
+};
+
+void list_free(list** bl)
+{
+    node* c = (*bl)->first;
+    while (c != NULL) {
+        node* t = c->next;
+        free(c);
+        c = t;
+    };
+    free(*bl);
+    *bl = NULL;
+};
+
+void list_insert(list* bl, node* n, void* data)
+{
+	node* new = node_init(data, err);
+	
+    if (n->next == NULL) {
+		free(new);
+        list_add(bl, data, err);
+    } 
+	else {
+		node* t = n->next;
+		t->prev = new;
+		n->next = new;
+        new->next = t;
+        new->prev = n;
+    };
+};
