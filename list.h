@@ -14,10 +14,17 @@ typedef struct bin_list
     node* last; 
 } list;
 
-node* node_init(void*);
-list* list_init();
-void list_add(list*, void*);
-void list_free(list**);
-void list_insert(list*, node*, void*);
-void list_remove(list*, node*);
+typedef enum {
+	ESUCCESS = 0,
+	EINVARG,
+	EALLOC,
+	EEMPTY
+} LIST_ERR;
+
+node* node_init(void*, LIST_ERR *err);
+list* list_init(LIST_ERR *err);
+void list_add(list*, void*, LIST_ERR *err);
+void list_free(list**, LIST_ERR *err);
+void list_insert(list*, node*, void*, LIST_ERR *err);
+void list_remove(list*, node*, LIST_ERR *err);
 

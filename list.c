@@ -1,6 +1,6 @@
 #include "list.h"
 
-list* list_init()
+list* list_init(LIST_ERR *err)
 {
     list* bl = (list*)malloc(sizeof(list));	
     bl->last = NULL;
@@ -9,7 +9,7 @@ list* list_init()
     return bl;
 };
 
-node* node_init(void* data)
+node* node_init(void* data, LIST_ERR *err)
 {
     node* n = (node*)malloc(sizeof(node)*1);
     n->data = data;
@@ -18,7 +18,7 @@ node* node_init(void* data)
 	return n;
 };
 
-void list_add(list* bl, void* data)
+void list_add(list* bl, void* data, LIST_ERR *err)
 {
     node* new = node_init(data, err);
 	
@@ -33,7 +33,7 @@ void list_add(list* bl, void* data)
     }
 };
 
-void list_free(list** bl)
+void list_free(list** bl, LIST_ERR *err)
 {
     node* c = (*bl)->first;
     while (c != NULL) {
@@ -45,7 +45,7 @@ void list_free(list** bl)
     *bl = NULL;
 };
 
-void list_insert(list* bl, node* n, void* data)
+void list_insert(list* bl, node* n, void* data, LIST_ERR *err)
 {
 	node* new = node_init(data, err);
 	
@@ -62,7 +62,7 @@ void list_insert(list* bl, node* n, void* data)
     };
 };
 
-void list_remove(list* bl, node* n)
+void list_remove(list* bl, node* n, LIST_ERR *err)
 {
 	
     if (n == bl->first && n == bl->last) {
