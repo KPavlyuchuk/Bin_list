@@ -65,6 +65,13 @@ void list_add(list* bl, void* data, LIST_ERR *err)
 
 void list_free(list** bl, LIST_ERR *err)
 {
+    if (bl == NULL) {
+		fprintf(stderr, "Invalid argument: list\n");
+		if (err != NULL)
+			*err = EINVARG;
+		return;
+	}
+	
     node* c = (*bl)->first;
     while (c != NULL) {
         node* t = c->next;
@@ -73,6 +80,7 @@ void list_free(list** bl, LIST_ERR *err)
     };
     free(*bl);
     *bl = NULL;
+	*err = ESUCCESS;
 };
 
 void list_insert(list* bl, node* n, void* data, LIST_ERR *err)
