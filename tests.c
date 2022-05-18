@@ -16,6 +16,13 @@ int main()
 		fprintf(stdout, "Test_1\t->\tFAILED\n");
 	else
 		fprintf(stdout, "Test_1\t->\tPASSED\n");
-
+	
+	for (int i = 0; i < 2; i++) {
+        list_add(NULL, &a[i], &err);
+		if (err != EINVARG)
+			fprintf(stdout, "Test_2\t->\tFAILED\n");
+		else
+			fprintf(stdout, "Test_2\t->\tPASSED\n");
+	}
 	return 0;
 }
