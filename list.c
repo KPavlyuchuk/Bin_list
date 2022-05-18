@@ -42,6 +42,14 @@ void list_add(list* bl, void* data, LIST_ERR *err)
 {
     node* new = node_init(data, err);
 	
+	if (bl == NULL) {
+		free(new);
+		fprintf(stderr, "List_add error\n");
+		if (err != NULL)
+			*err = EINVARG;
+		return;
+	}
+	
     if (bl->first == NULL) {
         bl->first = new; 
         bl->last = new;
@@ -51,6 +59,8 @@ void list_add(list* bl, void* data, LIST_ERR *err)
         new->prev = bl->last;
         bl->last = new;
     }
+	
+	*err = ESUCCESS;
 };
 
 void list_free(list** bl, LIST_ERR *err)
