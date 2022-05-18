@@ -30,5 +30,11 @@ int main()
 		fprintf(stdout, "Test_3\t->\tFAILED\n");
 	else
 		fprintf(stdout, "Test_3\t->\tPASSED\n");
+		
+	list_free(NULL, &err);
+	if (err != EINVARG)
+		fprintf(stdout, "Test_4\t->\tFAILED\n");
+	else
+		fprintf(stdout, "Test_4\t->\tPASSED\n");
 	return 0;
 }
