@@ -42,5 +42,12 @@ int main()
 		fprintf(stdout, "Test_5\t->\tFAILED\n");
 	else
 		fprintf(stdout, "Test_5\t->\tPASSED\n");
+	
+	node* n = node_init(&b, &err);
+	list_insert(list, n, &b, &err);
+	if (err != ESUCCESS)
+		fprintf(stdout, "Test_6\t->\tFAILED\n");
+	else
+		fprintf(stdout, "Test_6\t->\tPASSED\n");
 	return 0;
 }
