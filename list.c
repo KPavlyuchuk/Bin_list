@@ -3,9 +3,18 @@
 list* list_init(LIST_ERR *err)
 {
     list* bl = (list*)malloc(sizeof(list));	
+	
+	if (bl == NULL) {
+		fprintf(stderr, "Not enough memory\n");
+		if (err != NULL)
+			*err = EALLOC;
+		return NULL;
+	}
+	
     bl->last = NULL;
     bl->first = NULL;
-	
+	*err = ESUCCESS;
+
     return bl;
 };
 
