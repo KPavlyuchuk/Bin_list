@@ -24,5 +24,11 @@ int main()
 		else
 			fprintf(stdout, "Test_2\t->\tPASSED\n");
 	}
+	
+	list_insert(NULL, NULL, &a[N-2], &err);
+	if (err != EINVARG)
+		fprintf(stdout, "Test_3\t->\tFAILED\n");
+	else
+		fprintf(stdout, "Test_3\t->\tPASSED\n");
 	return 0;
 }
