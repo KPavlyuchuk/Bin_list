@@ -110,7 +110,13 @@ void list_insert(list* bl, node* n, void* data, LIST_ERR *err)
 };
 
 void list_remove(list* bl, node* n, LIST_ERR *err)
-{
+{	
+    if (bl->first == NULL) {
+		fprintf(stderr, "List_remove error\n");
+		if (err != NULL)
+			*err = EEMPTY;
+		return;
+	}
 	
     if (n == bl->first && n == bl->last) {
         bl->first = NULL;
@@ -129,4 +135,5 @@ void list_remove(list* bl, node* n, LIST_ERR *err)
         bl->last = n->prev;
     }
     free(n);
+	*err = ESUCCESS;
 }
