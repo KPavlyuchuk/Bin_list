@@ -36,5 +36,11 @@ int main()
 		fprintf(stdout, "Test_4\t->\tFAILED\n");
 	else
 		fprintf(stdout, "Test_4\t->\tPASSED\n");
+	
+	list_remove(list, list->first, &err);
+	if (err != EEMPTY)
+		fprintf(stdout, "Test_5\t->\tFAILED\n");
+	else
+		fprintf(stdout, "Test_5\t->\tPASSED\n");
 	return 0;
 }
