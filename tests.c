@@ -106,5 +106,7 @@ int main()
 		fprintf(stdout, "Test_15\t->\tFAILED\n");
 	else
 		fprintf(stdout, "Test_15\t->\tPASSED\n");
+	free(n);
+	free(a);
 	return 0;
 }
