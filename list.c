@@ -61,3 +61,25 @@ void list_insert(list* bl, node* n, void* data)
         new->prev = n;
     };
 };
+
+void list_remove(list* bl, node* n)
+{
+	
+    if (n == bl->first && n == bl->last) {
+        bl->first = NULL;
+        bl->last = NULL;
+    }
+    else if(n == bl->first) {
+        (n->next)->prev = NULL;
+        bl->first = n->next;
+    } 
+    else if(n != bl->first && n != bl->last) {
+        (n->prev)->next = n->next;
+        (n->next)->prev = n->prev;
+    }
+	else if(n == bl->last) {
+        (n->prev)->next = n->next;
+        bl->last = n->prev;
+    }
+    free(n);
+}
