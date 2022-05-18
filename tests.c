@@ -100,5 +100,11 @@ int main()
 		fprintf(stdout, "Test_14\t->\tFAILED\n");
 	else
 		fprintf(stdout, "Test_14\t->\tPASSED\n");
+	
+	list_free(&list, &err);
+	if (err != ESUCCESS)
+		fprintf(stdout, "Test_15\t->\tFAILED\n");
+	else
+		fprintf(stdout, "Test_15\t->\tPASSED\n");
 	return 0;
 }
