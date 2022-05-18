@@ -55,5 +55,12 @@ int main()
 		fprintf(stdout, "Test_7\t->\tFAILED\n");
 	else
 		fprintf(stdout, "Test_7\t->\tPASSED\n");
+	
+	list_add(list, &b, &err);
+	list_remove(list, list->first, &err);
+	if (err != ESUCCESS)
+		fprintf(stdout, "Test_8\t->\tFAILED\n");
+	else
+		fprintf(stdout, "Test_8\t->\tPASSED\n");
 	return 0;
 }
