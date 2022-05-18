@@ -21,9 +21,20 @@ list* list_init(LIST_ERR *err)
 node* node_init(void* data, LIST_ERR *err)
 {
     node* n = (node*)malloc(sizeof(node)*1);
+	
+	if (n == NULL) {
+		free(n);
+		fprintf(stderr, "Not enough memory\n");
+		if (err != NULL)
+			*err = EALLOC;
+		return NULL;
+	}
+	
     n->data = data;
     n->next = NULL;
     n->prev = NULL;
+	
+	*err = ESUCCESS;
 	return n;
 };
 
