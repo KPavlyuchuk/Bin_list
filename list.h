@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 typedef struct _node
 {
@@ -27,4 +28,4 @@ void list_add(list*, void*, LIST_ERR *err);
 void list_free(list**, LIST_ERR *err);
 void list_insert(list*, node*, void*, LIST_ERR *err);
 void list_remove(list*, node*, LIST_ERR *err);
-
+node* list_find(list*, void*, int (*cmp)(void *a,void *b), LIST_ERR *err);
