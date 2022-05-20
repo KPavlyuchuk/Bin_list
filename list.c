@@ -136,4 +136,25 @@ void list_remove(list* bl, node* n, LIST_ERR *err)
     }
     free(n);
 	*err = ESUCCESS;
+};
+
+node* list_find(list* bl, void* target, int (*cmp)(void *a,void *b), LIST_ERR *err) {
+	
+	if (bl == NULL) {
+		fprintf(stderr, "List_find error\n");
+		if (err != NULL)
+			*err = EINVARG;
+		return NULL;
+	}
+	
+    node* n = bl->first;
+    while (n != NULL) {
+        if (cmp(n->data, target) == 0) {
+			*err = ESUCCESS;
+            return n;
+        }
+        n = n->next;
+    }
+	*err = ESUCCESS;
+    return NULL;
 }
