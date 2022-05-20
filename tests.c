@@ -1,6 +1,10 @@
 #include "list.h"
 #define N 10
 
+int comp_f(void *a, void *b) { 
+	return strcmp((const char *)a,(const char *)b); 
+};
+
 int main()
 {
 	list *list = NULL;
@@ -16,6 +20,12 @@ int main()
 		fprintf(stdout, "Test_1\t->\tFAILED\n");
 	else
 		fprintf(stdout, "Test_1\t->\tPASSED\n");
+	
+	list_find(list, &b, comp_f, &err);
+	if (err != ESUCCESS)
+		fprintf(stdout, "Test_11\t->\tFAILED\n");
+	else
+		fprintf(stdout, "Test_11\t->\tPASSED\n");
 	
 	for (int i = 0; i < 2; i++) {
         list_add(NULL, &a[i], &err);
