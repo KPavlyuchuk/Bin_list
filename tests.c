@@ -117,11 +117,24 @@ int main()
 	else
 		fprintf(stdout, "Test_15\t->\tPASSED\n");
 	
+	node* x;
+    if ((x = list_find(list, &b, comp_f, &err)) != NULL) {
+        printf("Found: %d\n", *(int*)(x->data));
+    }
+	else 
+		printf("NOT Found\n");
+	
+	list_find(list, &b, comp_f, &err);
+	if (err != ESUCCESS)
+		fprintf(stdout, "Test_16\t->\tFAILED\n");
+	else
+		fprintf(stdout, "Test_16\t->\tPASSED\n");
+	
 	list_free(&list, &err);
 	if (err != ESUCCESS)
-		fprintf(stdout, "Test_15\t->\tFAILED\n");
+		fprintf(stdout, "Test_17\t->\tFAILED\n");
 	else
-		fprintf(stdout, "Test_15\t->\tPASSED\n");
+		fprintf(stdout, "Test_17\t->\tPASSED\n");
 	free(n);
 	free(a);
 	return 0;
