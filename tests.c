@@ -111,6 +111,12 @@ int main()
 	else
 		fprintf(stdout, "Test_14\t->\tPASSED\n");
 	
+	list_find(NULL, &b, comp_f, &err);
+	if (err != EINVARG)
+		fprintf(stdout, "Test_15\t->\tFAILED\n");
+	else
+		fprintf(stdout, "Test_15\t->\tPASSED\n");
+	
 	list_free(&list, &err);
 	if (err != ESUCCESS)
 		fprintf(stdout, "Test_15\t->\tFAILED\n");
